@@ -13,8 +13,7 @@ def index():
 
 @app.route('/dashboard')
 def dashboard():
-    return "There be dragons"
-    #return render_template('dashboard.html')
+    return render_template('dashboard.html')
 
 
 if __name__ == '__main__':
