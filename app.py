@@ -12,6 +12,10 @@ app.config.update(
 def index():
     return render_template('homepage.html')
 
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
 @app.route('/dashboard')
 def dashboard():
     data = dr.read_gas_data(0)
