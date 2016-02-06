@@ -49,14 +49,13 @@ def year_to_index(year):
     return 5
 
 
-
 def read_gas_data(index):
     with open('data/gas_by_build.csv', 'r') as f:
         reader = csv.reader(f)
         for row in islice(reader, index, index + 1):
             counts = [float(r) for r in row]
             return json.dumps(counts)
-    
+            
 
 def read_elec_data(type_i, year_i, area_i):
     print type_i, year_i, area_i
@@ -70,5 +69,7 @@ def read_elec_data(type_i, year_i, area_i):
 
     
 if __name__ == "__main__":
-#    print read_gas_data(0)
+    #    print read_gas_data(0)
     read_elec_data(101, 101, 4)
+
+
