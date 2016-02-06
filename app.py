@@ -1,5 +1,6 @@
 import os
 from flask import Flask, render_template
+import data_reader as dr
 
 app = Flask(__name__)
 
@@ -13,7 +14,10 @@ def index():
 
 @app.route('/dashboard')
 def dashboard():
+    data = dr.read_gas_data(0)
+    print data
     return render_template('dashboard.html')
+
 
 
 if __name__ == '__main__':
