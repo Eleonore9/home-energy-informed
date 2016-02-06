@@ -9,8 +9,7 @@ app.config.update(
 
 @app.route('/')
 def index():
-    return "Hello, world"
-    #return render_template('index.html')
+    return render_template('homepage.html')
 
 @app.route('/dashboard')
 def dashboard():
