@@ -7,5 +7,5 @@ def read_gas_data(index):
         reader = csv.reader(f)
         for row in islice(reader, index, index + 1):
             counts = [float(r) for r in row]
-            return json.dump(counts)
+            return json.dumps(counts)
     
