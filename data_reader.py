@@ -22,6 +22,7 @@ def view(view_name, **kwargs):
         query_url = "%s/%s/%s?%s" % (_db_host, _db_name, view_name, query_string)
     else:
         query_url = "%s/%s/%s" % (_db_host, _db_name, view_name)
+    print query_url
     return get_response(_db_host, query_url)
 
 
@@ -50,23 +51,24 @@ def year_to_index(year):
 
 
 
-def read_gas_data(index):
-    with open('data/gas_by_build.csv', 'r') as f:
-        reader = csv.reader(f)
-        for row in islice(reader, index, index + 1):
-            counts = [float(r) for r in row]
-            return json.dumps(counts)
+def read_data(par, *args):
+    # Query the database, just return row values along with a header
+    data = view("_design/bdx/_view/%s_by_year" % par, key=[a for a in args])
+    data = [[r['value']] for r in data['rows']]
+    header = [[par]]
+    data = header + data
+    return json.dumps(data)
     
 
 def read_elec_data(type_i, year_i, area_i):
-    print type_i, year_i, area_i
-    # Just want the rows
-    data = view("_design/bdx/_view/elec_by_year", key=[type_i, year_i, area_i])
-    #    data = {i: r['value'] for i, r in enumerate(data['rows'])}
-    #    return json.dumps([v for v in data['rows'].values()]
-    data = [[r['value']] for r in data['rows']]
-    print json.dumps(data)
-    return json.dumps(data)
+    # Query the database, just return row values along with a header
+    print "ELEC:"
+    return read_data('elec', type_i, year_i, area_i)
+
+def read_gas_data(type_i, year_i, area_i):
+    # Query the database, just return row values along with a header
+    print "GAS:"
+    return read_data('gas', type_i, year_i, area_i)
 
     
 if __name__ == "__main__":

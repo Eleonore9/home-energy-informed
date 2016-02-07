@@ -5,8 +5,8 @@ console.log( "Hello!" )
 google.charts.load('current', {'packages': ['corechart']});
 
 // Set a callback to run when the Google Visualization API is loaded.
-google.charts.setOnLoadCallback(drawChart);
-google.charts.setOnLoadCallback(secondFunction);
+google.charts.setOnLoadCallback(readGasData);
+google.charts.setOnLoadCallback(readElecData);
 
 // Callback that creates and populates a data table,
 // instantiates the pie chart, passes in the data and
@@ -48,18 +48,26 @@ function drawChart() {
 }
 
 
-function secondFunction() {
-    $.getJSON( "/dashboard/elec_data", function() {
+function readGasData() {
+     $.getJSON( "/dashboard/gas_data", function() {
     })
         .done(function( data ) {
-            var chart_data = new google.visualization.DataTable();
-            chart_data.addColumn('number', 'Entries');
-            chart_data.addRows(google.visualization.arrayToDataTable(data));
-            console.log(chart_data);
+            var chart_data = google.visualization.arrayToDataTable(data);
+            var chart = new google.visualization.Histogram(document.getElementById('gas_div'));
+            var options = {title: 'Gas consumption (kWh)',
+                           legend: {position: 'none'}};
+            chart.draw(chart_data, options);
+        });
+}
+
+function readElecData() {
+     $.getJSON( "/dashboard/elec_data", function() {
+    })
+        .done(function( data ) {
+            var chart_data = google.visualization.arrayToDataTable(data);
             var chart = new google.visualization.Histogram(document.getElementById('elec_div'));
             var options = {title: 'Electricity consumption (kWh)',
                            legend: {position: 'none'}};
             chart.draw(chart_data, options);
-            console.log('drawn');
         });
 }
