@@ -50,7 +50,6 @@ def year_to_index(year):
     return 5
 
 
-
 def read_data(par, *args):
     # Query the database, just return row values along with a header
     data = view("_design/bdx/_view/%s_by_year" % par, key=[a for a in args])
@@ -59,7 +58,6 @@ def read_data(par, *args):
     data = header + data
     return json.dumps(data)
     
-
 def read_elec_data(type_i, year_i, area_i):
     # Query the database, just return row values along with a header
     print "ELEC:"
@@ -72,5 +70,7 @@ def read_gas_data(type_i, year_i, area_i):
 
     
 if __name__ == "__main__":
-#    print read_gas_data(0)
+    #    print read_gas_data(0)
     read_elec_data(101, 101, 4)
+
+
