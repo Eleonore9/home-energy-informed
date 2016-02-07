@@ -9,3 +9,6 @@ def read_gas_data(index):
             counts = [float(r) for r in row]
             return json.dumps(counts)
     
+
+if __name__ == "__main__":
+    print read_gas_data(0)
