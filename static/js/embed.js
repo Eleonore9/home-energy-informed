@@ -37,14 +37,15 @@ function plotEmbed() {
         // Update table with values
         // var text = "<h4>Place link here for: " + chart.getSelection()[0].row + "</h4>";
         var idx = chart.getSelection()[0].row +1;
-        var text = '<ul>'
+        var text = '<ul class="list-group">'
         for(var ipar=0; ipar< info[0].length; ipar++) {
-            text += '<li>' + info[0][ipar] + ': ' + info[idx][ipar] + '</li>'
+            text += '<li class="list-group-item">' + info[0][ipar] + ': ' + info[idx][ipar] + '</li>'
         }
-        text += '</ul';
+
+        text += '<li class="list-group-item">Embed property <a href="'+links[idx]+'">report</a></li>';
+        text += '</ul>';
         document.getElementById("listy").innerHTML = text;
 
-        document.getElementById("link_area").innerHTML = 'Embed property <a href="'+links[idx]+'">report</a>';
     });
 
 }
