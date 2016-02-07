@@ -30,10 +30,15 @@ def elec_data():
     elec_readings = dr.read_elec_data(101, 101, 4)
     return elec_readings
 
-@app.route('/dashboard/gas_data/<int:type>')
-def data_readings_filtered(type):
-    gas_readings = dr.read_gas_data(type, 101, 4)
+@app.route('/dashboard/gas_data/<int:type>/<int:age>/<int:area>')
+def data_readings_filtered(type, age, area):
+    gas_readings = dr.read_gas_data(type, age, area)
     return gas_readings
+
+@app.route('/dashboard/elec_data/<int:type>')
+def elec_data_filtered(type):
+    elec_readings = dr.read_elec_data(type, 101, 4)
+    return elec_readings
 
 
 if __name__ == '__main__':
