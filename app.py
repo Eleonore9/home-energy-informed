@@ -20,10 +20,15 @@ def about():
 def dashboard():
     return render_template('dashboard.html')
 
-@app.route('/dashboard/data')
+@app.route('/dashboard/gas_data')
 def data_readings():
-    gas_readings = dr.read_gas_data(0)
+    gas_readings = dr.read_gas_data(101, 101, 4)
     return gas_readings
+
+@app.route('/dashboard/elec_data')
+def elec_data():
+    elec_readings = dr.read_elec_data(101, 101, 4)
+    return elec_readings
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
