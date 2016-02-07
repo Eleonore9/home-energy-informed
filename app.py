@@ -30,6 +30,10 @@ def elec_data():
     elec_readings = dr.read_elec_data(101, 101, 4)
     return elec_readings
 
+@app.route('/embed')
+def embed():
+    return render_template('embed.html')
+
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port)
