@@ -18,11 +18,17 @@ def about():
 
 @app.route('/dashboard')
 def dashboard():
-    data = dr.read_gas_data(0)
-    print data
     return render_template('dashboard.html')
 
+@app.route('/dashboard/data')
+def data_readings():
+    gas_readings = dr.read_gas_data(0)
+    return gas_readings
 
+@app.route('/dashboard/elec_data')
+def elec_data():
+    elec_readings = dr.read_elec_data(101, 101, 4)
+    return elec_readings
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))

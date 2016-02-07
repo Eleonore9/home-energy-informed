@@ -28,6 +28,7 @@ def view(view_name, **kwargs):
 def get_response(host, url):
     headers = {}
     r =  requests.get(url, auth = requests.auth.HTTPBasicAuth(_key, _secret))
+    print url
     if r.status_code == 200:
         return r.json()
     else:
@@ -58,5 +59,16 @@ def read_gas_data(index):
     
 
 def read_elec_data(type_i, year_i, area_i):
-    return view("_design/bdx/_view/elec_by_year", key=[type_i, year_i, area_i])
+    print type_i, year_i, area_i
+    # Just want the rows
+    data = view("_design/bdx/_view/elec_by_year", key=[type_i, year_i, area_i])
+    #    data = {i: r['value'] for i, r in enumerate(data['rows'])}
+    #    return json.dumps([v for v in data['rows'].values()]
+    data = [[r['value']] for r in data['rows']]
+    print json.dumps(data)
+    return json.dumps(data)
+
     
+if __name__ == "__main__":
+#    print read_gas_data(0)
+    read_elec_data(101, 101, 4)
