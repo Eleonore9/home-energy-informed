@@ -1,5 +1,6 @@
 {% extends "layout2.html" %}
 {% block body %}
+<script type="text/javascript" src="static/js/dashboard.js"></script>
 
 <div class="row">
 
@@ -15,7 +16,7 @@
 	<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
 	  <li><a href="#" onclick="readGasDataFilter(101, 101, 4);readElecDataFilter(101, 101, 4);">Detached</a></li>
 	  <li><a href="#" onclick="readGasDataFilter(102, 101, 4);readElecDataFilter(102, 101, 4);">Semi detached</a></li>
-	  <li><a href="#" onclick="readGasDataFilter(103, 101, 4);readElecDataFilter(103 101, 4);">End terrace</a></li>
+	  <li><a href="#" onclick="readGasDataFilter(103, 101, 4);readElecDataFilter(103, 101, 4);">End terrace</a></li>
 	  <li><a href="#" onclick="readGasDataFilter(104, 101, 4);readElecDataFilter(104, 101, 4);">Mid terrace</a></li>
 	  <li><a href="#" onclick="readGasDataFilter(105, 101, 4);readElecDataFilter(105, 101, 4);">Bungalow</a></li>
 	  <li><a href="#" onclick="readGasDataFilter(106, 101, 4);readElecDataFilter(106, 101, 4);">Flat / maisonnette</a></li>
@@ -79,6 +80,14 @@
     <div class="elec_div" id="elec_div">
     </div>
   </div>
+
+ </div>
+
+<div class="row">
+  <div class="col-xs-6 board">
+    <a href="/embed" class="btn btn-primary btn-lg " role="button">Next</a>
+  </div>
 </div>
+
  
 {% endblock %}

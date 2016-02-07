@@ -30,6 +30,10 @@ def elec_data():
     elec_readings = dr.read_elec_data(101, 101, 4)
     return elec_readings
 
+@app.route('/embed')
+def embed():
+    return render_template('embed.html')
+
 @app.route('/dashboard/gas_data/<int:type>/<int:age>/<int:area>')
 def data_readings_filtered(type, age, area):
     gas_readings = dr.read_gas_data(type, age, area)
@@ -39,7 +43,6 @@ def data_readings_filtered(type, age, area):
 def elec_data_filtered(type, age, area):
     elec_readings = dr.read_elec_data(type, age, area)
     return elec_readings
-
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
