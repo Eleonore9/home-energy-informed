@@ -1,8 +1,8 @@
 console.log( "Hello!" )
 
-$(".line one dropdown-menu li").on('click', function(){
-  console.log("Click!");
-});
+//$(".line-one dropdown-menu li").on('click', function(){
+//  console.log("Click!");
+//});
 
 
 // Load the Visualization API and the piechart package.
