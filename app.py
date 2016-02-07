@@ -35,9 +35,9 @@ def data_readings_filtered(type, age, area):
     gas_readings = dr.read_gas_data(type, age, area)
     return gas_readings
 
-@app.route('/dashboard/elec_data/<int:type>')
-def elec_data_filtered(type):
-    elec_readings = dr.read_elec_data(type, 101, 4)
+@app.route('/dashboard/elec_data/<int:type>/<int:age>/<int:area>')
+def elec_data_filtered(type, age, area):
+    elec_readings = dr.read_elec_data(type, age, area)
     return elec_readings
 
 
