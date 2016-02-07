@@ -12,6 +12,29 @@ _key = "therstagaventorgarturste"
 _secret = "2064f38879837867cc86e27c916ac762a1a604d3"
 
 
+#Properties:
+# Age: 101-106:
+# 101: Pre 1930
+# 102: 1930 - 1949
+# 103: 1950 - 1966
+# 104: 1967 - 1982
+# 105: 1983 - 1995
+# 107: Post 1996
+
+# Type:
+# 101: Detached
+# 102: Semi detached
+# 103: End terrace
+# 104: Mid terrace
+# 105: Bungalow
+# 106: Flat / maisonette
+
+# Area:
+# 1: < 50 m2
+# 2: 51 - 100 m2
+# 3: 101 - 150 m2
+# 4: > 150 m2
+
 def view(view_name, **kwargs):
     query_opts = {}    
     for name, value in kwargs.items():

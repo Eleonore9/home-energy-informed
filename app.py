@@ -34,6 +34,16 @@ def elec_data():
 def embed():
     return render_template('embed.html')
 
+@app.route('/dashboard/gas_data/<int:type>/<int:age>/<int:area>')
+def data_readings_filtered(type, age, area):
+    gas_readings = dr.read_gas_data(type, age, area)
+    return gas_readings
+
+@app.route('/dashboard/elec_data/<int:type>/<int:age>/<int:area>')
+def elec_data_filtered(type, age, area):
+    elec_readings = dr.read_elec_data(type, age, area)
+    return elec_readings
+
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port)
